@@ -1,0 +1,50 @@
+* {
+    box-sizing:border-box;
+}
+body {
+    background-color: #272B33;
+}
+nav.navbar {
+    background-color: #3C3E44;
+    color: #fff;
+}
+.nav-link {
+    color: #fff;
+}
+.navbar-brand {
+    color: #fff;
+}
+.card {
+    border: none;
+}
+.card-body {
+    background-color: #3C3E44;
+    color: #fff;
+}
+.btn-rym {
+    background-color: #55cc44;
+    color: #fff;
+}
+.btn-rym:hover, .navbar-brand:hover  {
+    background-color: #55cc44;
+    color: #fff;
+    transform: scale(1.02);
+}
+
+.form-select {
+    background-color: #3C3E44 !important;
+    color: #fff;
+}
+a.page-link {
+    background-color: #272B33;
+    color: #55cc44;
+}
+.active>.page-link,
+.page-link.active {
+    background-color:#55cc44;
+    color: #272B33;
+}
+.pagination .page-item.disabled .page-link {
+    background-color:#272B33;
+    color: #fff;
+}
