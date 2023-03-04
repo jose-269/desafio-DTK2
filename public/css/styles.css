@@ -22,13 +22,22 @@ nav.navbar {
     color: #fff;
 }
 .btn-rym {
-    background-color: #55cc44;
+    background-color: #55cc44 ;
     color: #fff;
 }
 .btn-rym:hover, .navbar-brand:hover  {
     background-color: #55cc44;
     color: #fff;
     transform: scale(1.02);
+}
+button.btn-rym {
+    background-color: #55cc44 ;
+        color: #fff;
+}
+button.btn-rym:hover {
+    background-color: #55cc44;
+    color: #fff;
+    transform: scale(1.1);
 }
 
 .form-select {
@@ -46,5 +55,15 @@ a.page-link {
 }
 .pagination .page-item.disabled .page-link {
     background-color:#272B33;
+    color: #fff;
+}
+p.small{
+    display: block;
+}
+ul.character-details {
+    list-style-type: circle;
+    color: #55cc44;
+}   
+.list-detail {
     color: #fff;
 }

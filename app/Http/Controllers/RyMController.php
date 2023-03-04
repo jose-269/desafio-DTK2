@@ -17,8 +17,20 @@ class RyMController extends Controller
         $data = json_decode($res->getBody());
         // dd($data);
         $characters = collect($data->results);
+        // dd($characters);
 
-        // Paginar la colección
+        // Filtrar por origin y status si existen
+        $originFilter = request()->input('origin');
+        $statusFilter = request()->input('status');
+        
+        if ($originFilter) {
+            $characters = $characters->where('origin.name', $originFilter);
+        }
+        
+        if ($statusFilter) {
+            $characters = $characters->where('status', $statusFilter);
+        }
+        // Paginar characters
         $perPage = 6;
         $currentPage = request()->input('page') ?? 1;
         $paginated = new LengthAwarePaginator(
@@ -28,15 +40,31 @@ class RyMController extends Controller
             $currentPage,
             ['path' => url()->current()]
         );
-        $origins = $characters->pluck('origin.name')->unique()->values();
-        $statuses = $characters->pluck('status')->unique()->values();
+        // Obtener opciones para select de origin y status
+        $allOrigins = collect($data->results)->pluck('origin.name')->unique()->values();
+        $allStatuses = collect($data->results)->pluck('status')->unique()->values();
 
         // Pasar los datos a la vista
-        return [
+        return view('index', [
             'characters' => $paginated,
-            'origins' => $origins,
-            'statuses' => $statuses
-        ];
+            'origins' => $allOrigins,
+            'statuses' => $allStatuses,
+            'selectedOrigin' => $originFilter,
+            'selectedStatus' => $statusFilter,
+        ]);
 
+    }
+
+    public function getCharacterDetails($id)
+    {
+        $client = new Client();
+        $res = $client->request('GET', 'https://rickandmortyapi.com/api/character/'.$id);
+        $data = json_decode($res->getBody());
+        $character = $data;
+        // dd($character);
+
+        return view('character-details', [
+            'character' => $data
+        ]);
     }
 }

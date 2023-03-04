@@ -14,8 +14,6 @@ use App\Http\Controllers\RyMController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', function () {
-    $rymController = new RyMController();
-    $data = $rymController->getData();
-    return view('index', $data);
-});
+Route::get('/', [RyMController::class, 'getData'])->name('index');
+Route::get('/characters/{id}', [RyMController::class, 'getCharacterDetails'])->name('character.details');
+
