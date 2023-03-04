@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
-
-
-
 use GuzzleHttp\Client;
 
 class RyMController extends Controller
